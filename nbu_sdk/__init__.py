@@ -15,7 +15,7 @@ def get_date_from_format(date_str):
 
 
 class NbuApi(object):
-    BASE_URL = 'https://bank.gov.ua/NBU_BankInfo'
+    BASE_URL = 'https://bank.gov.ua'
     HEADERS = {
         'User-Agent': 'python',
         'Content-Type': 'application/json;charset=utf8',
@@ -37,7 +37,7 @@ class NbuApi(object):
                 'Server respond error! Error {}'.format(r.status_code))
 
     def get_bank(self, mfo=None):
-        param = {'type_request': '/get_data_branch', 'typ': 0}
+        param = {'type_request': '/NBU_BankInfo/get_data_branch', 'typ': 0}
         if mfo:
             if not isinstance(mfo, str):
                 mfo = str(mfo)
@@ -47,7 +47,7 @@ class NbuApi(object):
         return self.request_url(**param)
 
     def get_exchange_rate(self, currency=None, date=None):
-        param = {'type_request': '/v1/statdirectory/exchange', }
+        param = {'type_request': '/NBUStatService/v1/statdirectory/exchange', }
         if currency:
             if isinstance(currency, str) and len(
                     currency) == 3 and currency.isalpha():
