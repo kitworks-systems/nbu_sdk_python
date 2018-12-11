@@ -1,6 +1,9 @@
 import datetime
+import logging
 
 import requests
+
+_logger = logging.getLogger(__name__)
 
 
 def get_date_from_format(date_str):
@@ -33,8 +36,9 @@ class NbuApi(object):
                         r.json()[0]['message']))
             return r.json()
         else:
+            _logger.info('url %s, arg %', url, arg)
             raise Exception(
-                'Server respond error! Error {} {}'.format(r.status_code, arg))
+                'Server respond error! Error {}'.format(r.status_code))
 
     def get_bank(self, mfo=None):
         param = {'type_request': '/NBU_BankInfo/get_data_branch', 'typ': 0}
