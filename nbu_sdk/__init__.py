@@ -34,7 +34,7 @@ class NbuApi(object):
             return r.json()
         else:
             raise Exception(
-                'Server respond error! Error {}'.format(r.status_code))
+                'Server respond error! Error {} {}'.format(r.status_code, arg))
 
     def get_bank(self, mfo=None):
         param = {'type_request': '/NBU_BankInfo/get_data_branch', 'typ': 0}
