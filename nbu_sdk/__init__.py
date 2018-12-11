@@ -30,7 +30,7 @@ class NbuApi(object):
         arg['json'] = 'json'
         r = requests.get(url, params=arg, headers=self.HEADERS)
         if r.status_code in [200, 201]:
-            if 'message' in r.json()[0]:
+            if r.json() and 'message' in r.json()[0]:
                 raise Exception(
                     'Server respond error! Error {}'.format(
                         r.json()[0]['message']))
