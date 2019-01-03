@@ -7,8 +7,8 @@ _logger = logging.getLogger(__name__)
 
 
 def get_date_from_format(date_str):
-    date_patterns = ["%d-%m-%Y", "%d.%m.%Y", "%d/%m/%Y",
-                     "%Y-%m-%d", "%Y%m%d", ]
+    date_patterns = ['%d-%m-%Y', '%d.%m.%Y', '%d/%m/%Y',
+                     '%Y-%m-%d', '%Y%m%d', ]
     for pattern in date_patterns:
         try:
             return datetime.datetime.strptime(date_str, pattern).date()
