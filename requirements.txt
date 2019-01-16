@@ -1,1 +1,2 @@
 requests
+git+https://github.com/kitworkssystems/date_ext#egg=kws_date_ext
